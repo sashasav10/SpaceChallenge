@@ -29,12 +29,12 @@ public class Simulation {
     public ArrayList<Rocket> loadU1(ArrayList<Item> itemList) {
         ArrayList<Rocket> rocketU1List = new ArrayList();
         U1 rocketU1 = new U1();
-        for (Item ite : itemList) {
-            if (rocketU1.canCarry(ite)) rocketU1.carry(ite);
+        for (Item item : itemList) {
+            if (rocketU1.canCarry(item)) rocketU1.carry(item);
             else {
                 rocketU1List.add(rocketU1);
                 rocketU1 = new U1();
-                rocketU1.carry(ite);
+                rocketU1.carry(item);
             }
         }
         return rocketU1List;
@@ -43,12 +43,12 @@ public class Simulation {
     public ArrayList<Rocket> loadU2(ArrayList<Item> itemList) {
         ArrayList<Rocket> rocketU2List = new ArrayList();
         U2 rocketU2 = new U2();
-        for (Item ite : itemList) {
-            if (rocketU2.canCarry(ite)) rocketU2.carry(ite);
+        for (Item item : itemList) {
+            if (rocketU2.canCarry(ite)) rocketU2.carry(item);
             else {
                 rocketU2List.add(rocketU2);
                 rocketU2 = new U2();
-                rocketU2.carry(ite);
+                rocketU2.carry(item);
             }
         }
         return rocketU2List;
@@ -56,10 +56,10 @@ public class Simulation {
 
     public int runSimulation(ArrayList<Rocket> rocketList) {
         int budget = 0;
-        for (Rocket ro : rocketList) {
-            budget += ro.getCost();
-            while (!ro.land() || !ro.launch()) {
-                budget += ro.getCost();
+        for (Rocket rocket : rocketList) {
+            budget += rocket.getCost();
+            while (!rocket.land() || !rocket.launch()) {
+                budget += rocket.getCost();
             }
         }
         return budget;

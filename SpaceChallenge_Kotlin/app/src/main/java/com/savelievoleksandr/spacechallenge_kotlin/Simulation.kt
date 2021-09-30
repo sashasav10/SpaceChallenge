@@ -20,11 +20,11 @@ class Simulation(private val context: Context) {
     fun loadU1(itemList: ArrayList<Item>): ArrayList<Rocket> {
         val rocketU1List: ArrayList<Rocket> = ArrayList()
         var rocketU1 = U1()
-        for (ite in itemList) {
-            if (rocketU1.canCarry(ite)) rocketU1.carry(ite) else {
+        for (item in itemList) {
+            if (rocketU1.canCarry(item)) rocketU1.carry(item) else {
                 rocketU1List.add(rocketU1)
                 rocketU1 = U1()
-                rocketU1.carry(ite)
+                rocketU1.carry(item)
             }
         }
         return rocketU1List
@@ -33,11 +33,11 @@ class Simulation(private val context: Context) {
     fun loadU2(itemList: ArrayList<Item>): ArrayList<Rocket> {
         val rocketU2List: ArrayList<Rocket> = ArrayList()
         var rocketU2 = U2()
-        for (ite in itemList) {
-            if (rocketU2.canCarry(ite)) rocketU2.carry(ite) else {
+        for (item in itemList) {
+            if (rocketU2.canCarry(item)) rocketU2.carry(item) else {
                 rocketU2List.add(rocketU2)
                 rocketU2 = U2()
-                rocketU2.carry(ite)
+                rocketU2.carry(item)
             }
         }
         return rocketU2List
@@ -45,10 +45,10 @@ class Simulation(private val context: Context) {
 
     fun runSimulation(rocketList: ArrayList<Rocket>): Int {
         var budget = 0
-        for (ro in rocketList) {
-            budget += ro.cost
-            while (!ro.land() || !ro.launch()) {
-                budget += ro.cost
+        for (rocket in rocketList) {
+            budget += rocket.cost
+            while (!rocket.land() || !rocket.launch()) {
+                budget += rocket.cost
             }
         }
         return budget

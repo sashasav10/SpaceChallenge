@@ -10,13 +10,9 @@ open class Rocket(
     SpaceShip {
     var totalWeight = spaceshipWeight
 
-    override fun land(): Boolean {
-        return true
-    }
+    override fun land(): Boolean = true
 
-    override fun launch(): Boolean {
-        return true
-    }
+    override fun launch(): Boolean = true
 
     override fun canCarry(item: Item): Boolean {
         return totalWeight + item.weight <= maxWeight
